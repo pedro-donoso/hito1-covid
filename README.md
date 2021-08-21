@@ -53,7 +53,7 @@ node --v
 
 10. Una vez obtenido el JWT ingresar email y password en el servidor local 
 
-:link:  htttp://localhost:3000/jwt-practico
+:link:  htttp://localhost:3000/covid19
 
 ```
 email : "Sincere@april.biz", 
