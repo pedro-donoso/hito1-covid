@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- google fonts -->
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <!-- bootstrap -->
+
+    <!-- estilos propios -->
+    <link rel="stylesheet" href="./assets/css/style.css" />
+    <!-- estilos propios -->
+
+    <title>Casos Covid 19</title>
+</head>
+
+<body>
+    <!--navbar-->
+    <nav class="navbar">
+        <section class="container-fluid">
+            <ul>
+                <li>
+                    <a href="">Principal</a>
+                </li>
+                <li>
+                    <button type="button" id="elBoton" class="btn btn-warning" data-toggle="modal" data-target="#logeo">Obtener JWT</button>
+                </li>
+            </ul>
+        </section>
+    </nav>
+    <!--navbar-->
+
+    <!-- form -->
+    <div id="toggle-form">
+        <div class="modal fade" id="logeo" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="logeoToken" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content px-1 modal-form">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body text-danger text-center">
+                        <form id="form-login">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Ingresa tu correo:</label>
+                                <input type="email" class="form-control" id="covid-mail" aria-describedby="emailHelp">
+
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Ingresa tu contraseña:</label>
+                                <input type="password" class="form-control" id="covid-pass">
+                            </div>
+
+                            <button type="submit" class="btn btn-dark" id="btnSubmit" onclick="javascript: $('#close-button').click();">Acceder</button>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-dark" data-dismiss="modal" id="close-button">Volver</button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- form -->
+
+
+    <section class="container pt-5 bg-round">
+        <section id="covidChart"></section>
+    </section>
+    <section class="container" id="tablaPais">
+        <table class="table table-striped table-hover" id="tabla-covid"></table>
+        <!-- Modal -->
+        <div class="modal fade" id="chartPais" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="staticBackdropLabel">Modal title</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="covidChartPais"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <!-- <button type="button" class="btn btn-primary">Understood</button> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js" integrity="sha384-+YQ4JLhjyBLPDQt//I+STsc9iw4uQqACwlvpslubQzn4u2UU2UFM80nGisd026JF" crossorigin="anonymous"></script>
+    <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    <script src="./assets/js/scripts.js"></script>
+</body>
+
+</html>
