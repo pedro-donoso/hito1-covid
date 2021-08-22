@@ -38,32 +38,31 @@ nav a {
 
 tbody td {
     text-align: center;
-    min-width: 200px;
+    min-width: 100px;
     vertical-align: middle;
 }
 
 tbody th {
     color: #51cda0;
-    font-weight: 600;
 }
 
 tbody tr {
     text-align: center;
-    min-width: 200px;
+    min-width: 100px;
     vertical-align: middle;
 }
 
 tbody td:first-child {
-    font-weight: 600;
     color: #6d78ad;
 }
 
 .modal-form {
-    height: 43vh !important;
+    height: 43vh;
 }
 
 #tablaPais {
-    padding-top: 50px;
+    padding-top: 25em;
+    width: 100%;
 }
 
 .close {
@@ -71,21 +70,9 @@ tbody td:first-child {
 }
 
 #covidChart {
-    max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 .modal-content {
     height: 40vh;
-}
-
-.bg-round {
-    width: 100%;
-    height: auto;
-    margin: 0 auto;
-    min-height: 45vh;
-    margin-top: 100px;
-    background-color: rgb(255, 255, 255);
-    border-radius: 30px;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
