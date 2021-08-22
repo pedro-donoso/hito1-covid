@@ -1,16 +1,12 @@
 body {
-    width: 100%;
-    height: auto;
     font-family: 'Bebas Neue';
 }
 
 nav {
     display: inline-block;
     height: 80px;
-    width: 100%;
     position: fixed;
-    top: 0;
-    background-color: #00442b;
+    background-color: #000000;
     ;
 }
 
@@ -43,7 +39,8 @@ tbody td {
 }
 
 tbody th {
-    color: #51cda0;
+    color: #f2ff00;
+    background-color: #0015ff;
 }
 
 tbody tr {
@@ -53,23 +50,11 @@ tbody tr {
 }
 
 tbody td:first-child {
-    color: #6d78ad;
-}
-
-.modal-form {
-    height: 43vh;
+    color: #fff;
 }
 
 #tablaPais {
     padding-top: 25em;
-    width: 100%;
-}
-
-.close {
-    display: none;
-}
-
-#covidChart {
     width: 100%;
 }
 
