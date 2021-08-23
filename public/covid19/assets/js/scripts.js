@@ -131,7 +131,7 @@ const getDataChart = (data) => {
                     <td>${datafilter[i].location}</td>
                     <td>${datafilter[i].confirmed}</td>
                     <td>${datafilter[i].deaths}</td>
-                    <td><button type="button" class="btnCountry btn btn-outline-success" data-toggle="modal" data-target="#chartPais" value="${datafilter[i].location}">...Ver más</button></td>              
+                    <td><button type="button" class="btnCountry btn btn-outline-success" data-toggle="modal" data-target="#chartPais" value="${datafilter[i].location}">detalles</button></td>              
                     </tr>`;
         }
         document.querySelector("#tabla-covid").innerHTML = texto;
