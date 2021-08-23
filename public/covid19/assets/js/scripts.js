@@ -1,5 +1,7 @@
+// url base
 const baseUrl = 'http://localhost:3000/api/total'
 
+// posts
 const getPosts = async(url) => {
     try {
         const response = await fetch(url)
@@ -15,6 +17,8 @@ const getPosts = async(url) => {
         console.error(`Error: ${err}`)
     }
 }
+
+// url por país
 const getPostCountry = async(country) => {
     try {
         const response = await fetch(`http://localhost:3000/api/countries/${country}`);
@@ -28,6 +32,8 @@ const getPostCountry = async(country) => {
         console.error(`Error: ${err}`)
     }
 }
+
+// login
 const postData = async(email, password) => {
     try {
         const response = await fetch('http://localhost:3000/api/login', {
@@ -42,47 +48,14 @@ const postData = async(email, password) => {
     }
 }
 
-const baseUrlChile = 'http://localhost:3000/api'
-const getPostChile = async(url, jwt) => {
-    try {
-        const response = await fetch(url, {
-            method: 'GET',
-            headers: {
-                Authorization: `Bearer ${jwt}`
-            }
-        })
-        const { data } = await response.json();
-        if (data) {
-            getChileChart(data)
-            console.log(data)
-            return data
-        }
-    } catch (err) {
-        localStorage.clear();
-        console.error(`Error: ${err}`)
-    }
-}
-const linkPage = async(page) => {
-    const token = localStorage.getItem('token-usuario')
-    console.log(token)
-    const url = `${baseUrlChile}/${page}`;
-    return getPostChile(url, token);
-}
-const init = async() => {
-    const token = localStorage.getItem('token-usuario')
-    if (token) {
-        getPostChile(token);
-    }
-}
-init();
-
-
+//casos
 let dataApiConfirmed = [];
 let dataApiDeath = [];
 
 let countryApiConfirmed = [];
 let countryApiDeath = [];
 
+// canvas js
 const getDataChart = (data) => {
     let dataComplete = data;
     let arrayfilter = dataComplete.filter((m) => {
@@ -102,7 +75,7 @@ const getDataChart = (data) => {
     console.log(dataApiConfirmed)
     let config = {
         animationEnabled: true,
-        theme: "light2",
+        theme: "dark1",
         title: {
             text: "Casos covid-19 a nivel mundial",
             fontFamily: 'Open Sans',
@@ -112,7 +85,7 @@ const getDataChart = (data) => {
             title: "",
             labelAngle: 45,
             interval: 1,
-            labelFontColor: "#3c3c3c",
+            labelFontColor: "#fff",
 
         },
         axisY: {
@@ -123,19 +96,9 @@ const getDataChart = (data) => {
             tickColor: "#a3a3a3",
             gridThickness: 1
         },
-        axisY2: {
-            // title: "",
-            // titleFontColor: "#C0504E",
-            // lineColor: "#C0504E",
-            // labelFontColor: "#C0504E",
-            // tickColor: "#C0504E"
-        },
-        // toolTip: {
-        //     shared: true
-        // },
+
         legend: {
             cursor: "pointer",
-            // itemclick: toggleDataSeries
         },
         dataPointWidth: 15,
         height: 350,
@@ -154,35 +117,21 @@ const getDataChart = (data) => {
                 axisYType: "secondary",
                 showInLegend: true,
                 dataPoints: dataApiDeath
-            },
-            // {
-            //     type: "column",	
-            //     name: "Oil Production (million/day)",
-            //     legendText: "Oil Production",
-            //     axisYType: "secondary",
-            //     showInLegend: true,
-            //     dataPoints:[
-            //         { label: "Saudi", y: 10.46 },
-            //         { label: "Venezuela", y: 2.27 },
-            //         { label: "Iran", y: 3.99 },
-            //         { label: "Iraq", y: 4.45 },
-            //         { label: "Kuwait", y: 2.92 },
-            //         { label: "UAE", y: 3.1 }
-            //     ]
-            // }
+            }
         ]
     };
     let chart = new CanvasJS.Chart("covidChart", config);
     chart.render();
 
+    // grafico pais
     function datoTabla(datafilter) {
-        let texto = "<tr><th>Paises</th><th>Confirmados</th><th>Muertos</th><th>Detalle</th></tr>";
+        let texto = "<tr><th>Paises</th><th>Confirmados</th><th>Muertos</th><th>Gráfico</th></tr>";
         for (let i = 0; i < datafilter.length; i++) {
             texto += `<tr>
                     <td>${datafilter[i].location}</td>
                     <td>${datafilter[i].confirmed}</td>
                     <td>${datafilter[i].deaths}</td>
-                    <td><button type="button" class="btnCountry btn btn-outline-primary" data-toggle="modal" data-target="#chartPais" value="${datafilter[i].location}">Ver más</button></td>              
+                    <td><button type="button" class="btnCountry btn btn-outline-success" data-toggle="modal" data-target="#chartPais" value="${datafilter[i].location}">...Ver más</button></td>              
                     </tr>`;
         }
         document.querySelector("#tabla-covid").innerHTML = texto;
@@ -197,6 +146,7 @@ const getDataChart = (data) => {
     });
 }
 
+// grafico boton
 const getCountryChart = (data) => {
     let countryData = data;
     countryApiConfirmed.push({
@@ -211,35 +161,30 @@ const getCountryChart = (data) => {
     console.log(countryApiDeath)
     let configPais = {
         animationEnabled: true,
-        theme: "light2",
+        theme: "light1",
         title: {
-            text: ""
+            text: "Caso País"
         },
         axisX: {
-            labelAngle: 45,
+            labelAngle: 0,
             interval: 1
         },
         axisY: {
-            title: "",
-            titleFontColor: "#4F81BC",
-            lineColor: "#4F81BC",
-            labelFontColor: "#4F81BC",
-            tickColor: "#4F81BC"
+            title: "Confirmados",
+            titleFontColor: "#000",
+            lineColor: "#000",
+            labelFontColor: "#000",
+            tickColor: "#000"
         },
         axisY2: {
-            title: "",
-            titleFontColor: "#51cda0",
-            lineColor: "#51cda0",
-            labelFontColor: "#51cda0",
-            tickColor: "#C0504E"
+            title: "Muertes",
+            titleFontColor: "#000",
+            lineColor: "#000",
+            labelFontColor: "#000",
+            tickColor: "#000"
         },
-        // toolTip: {
-        //     shared: true
-        // },
-        // legend: {
-        //     cursor:"pointer",
-        //     itemclick: toggleDataSeries
-        // },
+
+
         dataPointWidth: 50,
         height: 200,
         data: [{
@@ -257,48 +202,16 @@ const getCountryChart = (data) => {
                 showInLegend: true,
                 dataPoints: countryApiDeath
             },
-            // {
-            //     type: "column",	
-            //     name: "Oil Production (million/day)",
-            //     legendText: "Oil Production",
-            //     axisYType: "secondary",
-            //     showInLegend: true,
-            //     dataPoints:[
-            //         { label: "Saudi", y: 10.46 },
-            //         { label: "Venezuela", y: 2.27 },
-            //         { label: "Iran", y: 3.99 },
-            //         { label: "Iraq", y: 4.45 },
-            //         { label: "Kuwait", y: 2.92 },
-            //         { label: "UAE", y: 3.1 }
-            //     ]
-            // }
+
         ]
     };
     let chart = new CanvasJS.Chart("covidChartPais", configPais);
     chart.render();
 }
-let confirmedChileChart = [];
-const getChileChart = (data) => {
-    let dataChile = data;
-    let confirmadosChileDate = 0;
-    let confirmadosChileNumb = 0;
 
-    for (let i = 0; i < dataChile.length; i += 15) {
-        confirmadosChileDate = data[i].date;
-        confirmadosChileNumb = data[i].total;
-
-        confirmedChileChart.push({
-            label: confirmadosChileDate,
-            y: confirmadosChileNumb
-        });
-
-    }
-    console.log(confirmedChileChart)
-}
 
 $('#form-login').submit(async(event) => {
     event.preventDefault();
-    console.log("hola submit")
     const email = document.querySelector("#covid-mail").value;
     const pass = document.querySelector("#covid-pass").value;
     const JWT = await postData(email, pass);
