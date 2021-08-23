@@ -1,3 +1,5 @@
+![Captura](https://user-images.githubusercontent.com/68760595/130378415-c0c6495b-27e6-451c-b71d-167324cb24dd.PNG)
+
 # Pasos:
 
 *en caso de problemas CORS, desde terminal: 
